@@ -251,7 +251,7 @@ class FeatureConfig implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['project'] = $data['project'] ?? null;
         $this->container['environment'] = $data['environment'] ?? null;
@@ -303,7 +303,7 @@ class FeatureConfig implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['variations'] === null) {
             $invalidProperties[] = "'variations' can't be null";
         }
-        if ((count($this->container['variations']) < 2)) {
+        if (!is_null($this->container['variations']) && (count($this->container['variations']) < 2)) {
             $invalidProperties[] = "invalid value for 'variations', number of items must be greater than or equal to 2.";
         }
 

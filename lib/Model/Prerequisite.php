@@ -183,7 +183,7 @@ class Prerequisite implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->container['feature'] = $data['feature'] ?? null;
         $this->container['variations'] = $data['variations'] ?? null;
